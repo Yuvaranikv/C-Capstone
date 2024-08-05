@@ -16,6 +16,8 @@ namespace BookStoreAPI.Models
         [Required]
         [Column("is_active")]
         public bool IsActive { get; set; } = true;
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         // Navigation property
         public ICollection<Book> Books { get; set; }

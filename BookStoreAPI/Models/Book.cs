@@ -34,6 +34,8 @@ namespace BookStoreAPI.Models
 
         [Required]
         public bool IsActive { get; set; } = true;
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         // Navigation properties
         public Author Author { get; set; }
