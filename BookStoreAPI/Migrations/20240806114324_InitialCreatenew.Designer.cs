@@ -4,6 +4,7 @@ using BookStoreAPI.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStoreAPI.Migrations
 {
     [DbContext(typeof(BookStoreContext))]
-    partial class BookStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20240806114324_InitialCreatenew")]
+    partial class InitialCreatenew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,192 +27,191 @@ namespace BookStoreAPI.Migrations
 
             modelBuilder.Entity("BookStoreAPI.Models.Genres", b =>
                 {
-                    b.Property<int>("genre_id")
+                    b.Property<int>("genreId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("genre_id");
+                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("genre_id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("genreId"));
 
                     b.Property<DateTime>("createdAt")
                         .HasColumnType("datetime2")
-                        .HasColumnName("createdAt");
+                        .HasColumnName("created_at");
 
-                    b.Property<string>("genre_name")
+                    b.Property<string>("genreName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("genre_name");
 
                     b.Property<bool>("isActive")
                         .HasColumnType("bit")
-                        .HasColumnName("isActive");
+                        .HasColumnName("is_active");
 
                     b.Property<DateTime>("updatedAt")
                         .HasColumnType("datetime2")
-                        .HasColumnName("updatedAt");
+                        .HasColumnName("updated_at");
 
-                    b.HasKey("genre_id");
+                    b.HasKey("genreId");
 
                     b.ToTable("Genres");
 
                     b.HasData(
                         new
                         {
-                            genre_id = 1,
+                            genreId = 1,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Fantasy",
+                            genreName = "Fantasy",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 2,
+                            genreId = 2,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Science Fiction",
+                            genreName = "Science Fiction",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 3,
+                            genreId = 3,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Mystery",
+                            genreName = "Mystery",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 4,
+                            genreId = 4,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Thriller",
+                            genreName = "Thriller",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 5,
+                            genreId = 5,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Romance",
+                            genreName = "Romance",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 6,
+                            genreId = 6,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Horror",
+                            genreName = "Horror",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 7,
+                            genreId = 7,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Historical Fiction",
+                            genreName = "Historical Fiction",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 8,
+                            genreId = 8,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Non-Fiction",
+                            genreName = "Non-Fiction",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 9,
+                            genreId = 9,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Adventure",
+                            genreName = "Adventure",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 10,
+                            genreId = 10,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Young Adult",
+                            genreName = "Young Adult",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 11,
+                            genreId = 11,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Classics",
+                            genreName = "Classics",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 12,
+                            genreId = 12,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Literary Fiction",
+                            genreName = "Literary Fiction",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 13,
+                            genreId = 13,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Dystopian",
+                            genreName = "Dystopian",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 14,
+                            genreId = 14,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Magical Realism",
+                            genreName = "Magical Realism",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 15,
+                            genreId = 15,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Graphic Novel",
+                            genreName = "Graphic Novel",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 16,
+                            genreId = 16,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Short Stories",
+                            genreName = "Short Stories",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 17,
+                            genreId = 17,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Biography",
+                            genreName = "Biography",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 18,
+                            genreId = 18,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Self-Help",
+                            genreName = "Self-Help",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 19,
+                            genreId = 19,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Poetry",
+                            genreName = "Poetry",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
-                            genre_id = 20,
+                            genreId = 20,
                             createdAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            genre_name = "Drama",
+                            genreName = "Drama",
                             isActive = true,
                             updatedAt = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });

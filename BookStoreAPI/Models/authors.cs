@@ -4,11 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace BookStoreAPI.Models
 {
    
-    public class Author
+    public class authors
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int AuthorId { get; set; }
+
+        [Column("author_id")]
+        public int author_id { get; set; }
 
         [Required]
         [StringLength(255, MinimumLength = 1)]
@@ -21,7 +23,7 @@ namespace BookStoreAPI.Models
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         // Navigation property
-        public ICollection<Book> Books { get; set; }
+        public ICollection<books> Books { get; set; }
 
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace BookStoreAPI.Models
 {
-    public class User
+    public class userstest
     {
         public int Id { get; set; } // Assuming Id is the primary key
         public string Username { get; set; }

@@ -7,7 +7,7 @@ using BookStoreAPI.Services;
 
 namespace BookStoreAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("userstest")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -25,7 +25,7 @@ namespace BookStoreAPI.Controllers
             /// </summary>
             /// <returns>All active users</returns>
             [HttpGet]
-            public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+            public async Task<ActionResult<IEnumerable<userstest>>> GetUsers()
             {
                 var users = await _userRepository.GetActiveUsersAsync();
                 return Ok(users);
@@ -37,7 +37,7 @@ namespace BookStoreAPI.Controllers
             /// <param name="user">User credentials</param>
             /// <returns>Status of the login attempt</returns>
             [HttpPost]
-            public async Task<ActionResult> CheckUser([FromBody] User user)
+            public async Task<ActionResult> CheckUser([FromBody] userstest user)
             {
                 if (user == null || string.IsNullOrEmpty(user.Username) || string.IsNullOrEmpty(user.Password))
                 {
@@ -62,7 +62,7 @@ namespace BookStoreAPI.Controllers
             /// <param name="user">User credentials</param>
             /// <returns>Status of the login attempt</returns>
             [HttpPost("login")]
-            public async Task<ActionResult> Login([FromBody] User user)
+            public async Task<ActionResult> Login([FromBody] userstest user)
             {
                 if (user == null || string.IsNullOrEmpty(user.Username) || string.IsNullOrEmpty(user.Password))
                 {

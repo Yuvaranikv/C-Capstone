@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace BookStoreAPI.Models
 {
@@ -7,19 +8,24 @@ namespace BookStoreAPI.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int GenreId { get; set; }
+        [Column("genre_id")]
+        public int genre_id { get; set; }
 
         [Required]
         [Column("genre_name")]
-        public string GenreName { get; set; }
+        public string genre_name { get; set; }
 
         [Required]
-        [Column("is_active")]
-        public bool IsActive { get; set; } = true;
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        [Column("isActive")]
+        public bool isActive { get; set; } = true;
+
+        [Column("createdAt")]
+        public DateTime createdAt { get; set; }
+
+        [Column("updatedAt")]
+        public DateTime updatedAt { get; set; }
 
         // Navigation property
-        public ICollection<Book> Books { get; set; }
+        public ICollection<books> Books { get; set; }
     }
 }

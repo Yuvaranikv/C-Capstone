@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class GenresController : ControllerBase
     {
@@ -43,27 +43,26 @@ namespace BookStoreAPI.Controllers
         [HttpPost("add")]
         public async Task<ActionResult<Genres>> AddGenre([FromBody] GenreCreateDto genreDto)
         {
-            if (genreDto == null || string.IsNullOrEmpty(genreDto.GenreName))
+            if (genreDto == null || string.IsNullOrEmpty(genreDto.genre_name))
             {
                 return BadRequest("Genre name is required");
             }
 
             var genre = new Genres
             {
-                GenreName = genreDto.GenreName,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow
+                genre_name = genreDto.genre_name,
+                createdAt = DateTime.UtcNow,
+                updatedAt = DateTime.UtcNow
             };
 
             var createdGenre = await _repository.AddGenreAsync(genre);
             return StatusCode(StatusCodes.Status201Created, createdGenre);
         }
 
-
         [HttpPut("edit/{id}")]
         public async Task<ActionResult<Genres>> UpdateGenre(int id, [FromBody] GenreCreateDto genreDto)
         {
-            if (genreDto == null || string.IsNullOrEmpty(genreDto.GenreName))
+            if (genreDto == null || string.IsNullOrEmpty(genreDto.genre_name))
             {
                 return BadRequest("Genre name is required");
             }
@@ -72,7 +71,6 @@ namespace BookStoreAPI.Controllers
             if (updatedGenre == null) return NotFound();
             return Ok(updatedGenre);
         }
-
 
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteGenre(int id)

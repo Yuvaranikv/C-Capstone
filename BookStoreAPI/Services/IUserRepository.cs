@@ -4,8 +4,8 @@ namespace BookStoreAPI.Services
 {
     public interface IUserRepository
     {
-        Task<IEnumerable<User>> GetActiveUsersAsync();
-        Task<User> GetUserByCredentialsAsync(string username, string password);
+        Task<IEnumerable<userstest>> GetActiveUsersAsync();
+        Task<userstest> GetUserByCredentialsAsync(string username, string password);
 
     }
 }

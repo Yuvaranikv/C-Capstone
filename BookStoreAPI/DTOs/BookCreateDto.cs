@@ -6,25 +6,25 @@ namespace BookStoreAPI.DTOs
     {
         [Required]
         [StringLength(255, MinimumLength = 1)]
-        public string Title { get; set; }
+        public string title { get; set; }
 
         [Required]
-        public int AuthorId { get; set; }
+        public int author_id { get; set; }
 
         [Required]
-        public int GenreId { get; set; }
+        public int genre_id { get; set; }
 
         [Required]
         [Range(0, double.MaxValue, ErrorMessage = "Price must be a positive number")]
-        public decimal Price { get; set; }
+        public decimal price { get; set; }
 
-        public DateTime? PublicationDate { get; set; }
+        public DateTime? publication_date { get; set; }
 
         [StringLength(20)]
         public string ISBN { get; set; }
 
-        public string ImageURL { get; set; }
+        public string imageURL { get; set; }
 
-        public string Description { get; set; }
+        public string description { get; set; }
     }
 }

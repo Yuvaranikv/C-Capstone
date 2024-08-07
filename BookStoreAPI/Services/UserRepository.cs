@@ -12,14 +12,14 @@ namespace BookStoreAPI.Services
             _context = context;
 
         }
-        public async Task<IEnumerable<User>> GetActiveUsersAsync()
+        public async Task<IEnumerable<userstest>> GetActiveUsersAsync()
         {
-            return await _context.Users.Where(u => u.IsActive).ToListAsync();
+            return await _context.Userstest.Where(u => u.IsActive).ToListAsync();
         }
 
-        public async Task<User> GetUserByCredentialsAsync(string username, string password)
+        public async Task<userstest> GetUserByCredentialsAsync(string username, string password)
         {
-            return await _context.Users
+            return await _context.Userstest
                 .FirstOrDefaultAsync(u => u.Username == username && u.Password == password);
         }
     }

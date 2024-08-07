@@ -7,7 +7,7 @@ using AutoMapper;
 
 namespace BookStoreAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class BooksController : ControllerBase
     {
@@ -29,7 +29,7 @@ namespace BookStoreAPI.Controllers
 
             var bookDtos = _mapper.Map<IEnumerable<BookDto>>(books);
 
-            return Ok(new { books = bookDtos, totalCount });
+            return Ok(new { books = bookDtos, totalCount = books.Count() });
         }
 
         [HttpGet("all")]
@@ -53,14 +53,14 @@ namespace BookStoreAPI.Controllers
         [HttpPost("add")]
         public async Task<ActionResult<BookDto>> AddBook([FromBody] BookCreateDto bookDto)
         {
-            if (bookDto == null || string.IsNullOrEmpty(bookDto.Title))
+            if (bookDto == null || string.IsNullOrEmpty(bookDto.title))
             {
                 return BadRequest("Book title is required");
             }
 
-            var book = _mapper.Map<Book>(bookDto);
-            book.CreatedAt = DateTime.UtcNow;
-            book.UpdatedAt = DateTime.UtcNow;
+            var book = _mapper.Map<books>(bookDto);
+            book.createdAt = DateTime.UtcNow;
+            book.updatedAt = DateTime.UtcNow;
 
             var createdBook = await _repository.AddBookAsync(book);
 
@@ -71,14 +71,14 @@ namespace BookStoreAPI.Controllers
         [HttpPut("edit/{id}")]
         public async Task<ActionResult<BookDto>> UpdateBook(int id, [FromBody] BookCreateDto bookDto)
         {
-            if (bookDto == null || string.IsNullOrEmpty(bookDto.Title))
+            if (bookDto == null || string.IsNullOrEmpty(bookDto.title))
             {
                 return BadRequest("Book title is required");
             }
 
-            var book = _mapper.Map<Book>(bookDto);
-            book.CreatedAt = DateTime.UtcNow;
-            book.UpdatedAt = DateTime.UtcNow;
+            var book = _mapper.Map<books>(bookDto);
+            book.createdAt = DateTime.UtcNow;
+            book.updatedAt = DateTime.UtcNow;
 
             var updatedBook = await _repository.UpdateBookAsync(id, book);
             if (updatedBook == null) return NotFound();

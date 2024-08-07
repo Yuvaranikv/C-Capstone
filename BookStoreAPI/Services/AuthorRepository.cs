@@ -13,7 +13,7 @@ namespace BookStoreAPI.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Author>> GetAuthorsAsync(int page, int limit)
+        public async Task<IEnumerable<authors>> GetAuthorsAsync(int page, int limit)
         {
             var offset = (page - 1) * limit;
             return await _context.Authors
@@ -24,28 +24,28 @@ namespace BookStoreAPI.Services
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Author>> GetAllAuthorsAsync()
+        public async Task<IEnumerable<authors>> GetAllAuthorsAsync()
         {
             return await _context.Authors
                 .Where(a => a.IsActive)
                 .ToListAsync();
         }
 
-        public async Task<Author> GetAuthorByIdAsync(int id)
+        public async Task<authors> GetAuthorByIdAsync(int id)
         {
             return await _context.Authors
-                .Where(a => a.AuthorId == id && a.IsActive)
+                .Where(a => a.author_id == id && a.IsActive)
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<Author> AddAuthorAsync(Author author)
+        public async Task<authors> AddAuthorAsync(authors author)
         {
             _context.Authors.Add(author);
             await _context.SaveChangesAsync();
             return author;
         }
 
-        public async Task<Author> UpdateAuthorAsync(int id, Author author)
+        public async Task<authors> UpdateAuthorAsync(int id, authors author)
         {
             var existingAuthor = await _context.Authors.FindAsync(id);
             if (existingAuthor == null) return null;

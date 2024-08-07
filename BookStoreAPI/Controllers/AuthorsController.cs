@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookStoreAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AuthorsController : ControllerBase
     {
@@ -18,7 +18,7 @@ namespace BookStoreAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Author>>> GetAuthors([FromQuery] int page = 1, [FromQuery] int limit = 10)
+        public async Task<ActionResult<IEnumerable<authors>>> GetAuthors([FromQuery] int page = 1, [FromQuery] int limit = 10)
         {
             var authors = await _repository.GetAuthorsAsync(page, limit);
             var totalCount = await _repository.GetAllAuthorsAsync();
@@ -26,14 +26,14 @@ namespace BookStoreAPI.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<ActionResult<IEnumerable<Author>>> GetAllAuthors()
+        public async Task<ActionResult<IEnumerable<authors>>> GetAllAuthors()
         {
             var authors = await _repository.GetAllAuthorsAsync();
             return Ok(authors);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Author>> GetAuthorByIdAsync(int id)
+        public async Task<ActionResult<authors>> GetAuthorByIdAsync(int id)
         {
             var author = await _repository.GetAuthorByIdAsync(id);
             if (author == null) return NotFound();
@@ -41,14 +41,14 @@ namespace BookStoreAPI.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<ActionResult<Author>> AddAuthor([FromBody] AuthorCreateDto authorDto)
+        public async Task<ActionResult<authors>> AddAuthor([FromBody] AuthorCreateDto authorDto)
         {
             if (authorDto == null || string.IsNullOrEmpty(authorDto.Name))
             {
                 return BadRequest("Author name is required");
             }
 
-            var author = new Author
+            var author = new authors
             {
                 Name = authorDto.Name,
                 Biography = authorDto.Biography,
@@ -61,14 +61,14 @@ namespace BookStoreAPI.Controllers
         }
 
         [HttpPut("edit/{id}")]
-        public async Task<ActionResult<Author>> UpdateAuthor(int id, [FromBody] AuthorCreateDto authorDto)
+        public async Task<ActionResult<authors>> UpdateAuthor(int id, [FromBody] AuthorCreateDto authorDto)
         {
             if (authorDto == null || string.IsNullOrEmpty(authorDto.Name))
             {
                 return BadRequest("Author name is required");
             }
 
-            var author = new Author
+            var author = new authors
             {
                 Name = authorDto.Name,
                 Biography = authorDto.Biography

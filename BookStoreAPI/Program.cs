@@ -10,6 +10,20 @@ var builder = WebApplication.CreateBuilder(args);
 // Add the DbContext and configure it to use SQL Server
 builder.Services.AddDbContext<BookStoreContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Configure CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactClient",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3002")  // URL of your React client
+                  .AllowAnyHeader()
+                   .AllowAnyMethod()
+                   .AllowCredentials();
+                 
+        });
+});
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IGenreRepository,GenresRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
@@ -33,6 +47,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowReactClient");
 
 app.UseAuthorization();
 

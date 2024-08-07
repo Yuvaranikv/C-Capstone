@@ -1,4 +1,5 @@
 ﻿using BookStoreAPI.DbContexts;
+using BookStoreAPI.DTOs;
 using BookStoreAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,43 +14,123 @@ namespace BookStoreAPI.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Book>> GetBooksAsync(int page, int limit)
+        public async Task<IEnumerable<BookDto>> GetBooksAsync(int page, int limit)
         {
             return await _context.Books
                 .Include(b => b.Author)
                 .Include(b => b.Genres)
-                .Where(b => b.IsActive)
-                .OrderByDescending(b => b.CreatedAt)
+                .Where(b => b.isActive)
+                .OrderByDescending(b => b.createdAt)
                 .Skip((page - 1) * limit)
                 .Take(limit)
+                .Select(b => new BookDto
+                {
+                    book_id = b.book_id,
+                    title = b.title,
+                    author_id = b.author_id,
+                    Author = new AuthorCreateDto
+                    {
+                        author_id = b.Author.author_id,
+                        Name = b.Author.Name,
+                        Biography = b.Author.Biography
+                    },
+                    genre_id = b.genre_id,
+                    Genre = new GenreCreateDto
+                    {
+                        genre_id = b.Genres.genre_id,
+                        genre_name = b.Genres.genre_name
+                    },
+                    price = b.price,
+                    publication_date = b.publication_date,
+                    ISBN = b.ISBN,
+                    imageURL = b.imageURL,
+                    description = b.description,
+                    isActive = b.isActive,
+                    createdAt = b.createdAt,
+                    updatedAt = b.updatedAt
+                })
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Book>> GetAllBooksAsync()
+
+        public async Task<IEnumerable<BookDto>> GetAllBooksAsync()
         {
             return await _context.Books
                 .Include(b => b.Author)
                 .Include(b => b.Genres)
-                .Where(b => b.IsActive)
+                .Where(b => b.isActive)
+                .Select(b => new BookDto
+                {
+                    book_id = b.book_id,
+                    title = b.title,
+                    author_id = b.author_id,
+                    Author = new AuthorCreateDto
+                    {
+                        author_id = b.Author.author_id,
+                        Name = b.Author.Name,
+                        Biography = b.Author.Biography
+                    },
+                    genre_id = b.genre_id,
+                    Genre = new GenreCreateDto
+                    {
+                        genre_id = b.Genres.genre_id,
+                        genre_name = b.Genres.genre_name
+                    },
+                    price = b.price,
+                    publication_date = b.publication_date,
+                    ISBN = b.ISBN,
+                    imageURL = b.imageURL,
+                    description = b.description,
+                    isActive = b.isActive,
+                    createdAt = b.createdAt,
+                    updatedAt = b.updatedAt
+                })
                 .ToListAsync();
         }
 
-        public async Task<Book> GetBookByIdAsync(int id)
+        public async Task<BookDto> GetBookByIdAsync(int id)
         {
             return await _context.Books
                 .Include(b => b.Author)
                 .Include(b => b.Genres)
-                .FirstOrDefaultAsync(b => b.BookId == id);
+                .Where(b => b.book_id == id)
+                .Select(b => new BookDto
+                {
+                    book_id = b.book_id,
+                    title = b.title,
+                    author_id = b.author_id,
+                    Author = new AuthorCreateDto
+                    {
+                        author_id = b.Author.author_id,
+                        Name = b.Author.Name,
+                        Biography = b.Author.Biography
+                    },
+                    genre_id = b.genre_id,
+                    Genre = new GenreCreateDto
+                    {
+                        genre_id = b.Genres.genre_id,
+                        genre_name = b.Genres.genre_name
+                    },
+                    price = b.price,
+                    publication_date = b.publication_date,
+                    ISBN = b.ISBN,
+                    imageURL = b.imageURL,
+                    description = b.description,
+                    isActive = b.isActive,
+                    createdAt = b.createdAt,
+                    updatedAt = b.updatedAt
+                })
+                .FirstOrDefaultAsync();
         }
 
-        public async Task<Book> AddBookAsync(Book book)
+        public async Task<books> AddBookAsync(books book)
         {
             _context.Books.Add(book);
             await _context.SaveChangesAsync();
             return book;
         }
 
-        public async Task<Book> UpdateBookAsync(int id, Book book)
+        public async Task<books> UpdateBookAsync(int id, books book)
         {
             var existingBook = await _context.Books.FindAsync(id);
             if (existingBook == null)
@@ -57,15 +138,15 @@ namespace BookStoreAPI.Services
                 return null;
             }
 
-            existingBook.Title = book.Title;
-            existingBook.AuthorId = book.AuthorId;
-            existingBook.GenreId = book.GenreId;
-            existingBook.Price = book.Price;
-            existingBook.PublicationDate = book.PublicationDate;
+            existingBook.title = book.title;
+            existingBook.author_id = book.author_id;
+            existingBook.genre_id = book.genre_id;
+            existingBook.price = book.price;
+            existingBook.publication_date = book.publication_date;
             existingBook.ISBN = book.ISBN;
-            existingBook.ImageURL = book.ImageURL;
-            existingBook.Description = book.Description;
-            existingBook.UpdatedAt = book.UpdatedAt;
+            existingBook.imageURL = book.imageURL;
+            existingBook.description = book.description;
+            existingBook.updatedAt = book.updatedAt;
 
             await _context.SaveChangesAsync();
             return existingBook;
@@ -79,14 +160,14 @@ namespace BookStoreAPI.Services
                 return false;
             }
 
-            book.IsActive = false;
+            book.isActive = false;
             await _context.SaveChangesAsync();
             return true;
         }
 
         public async Task<int> GetTotalBookCountAsync()
         {
-            return await _context.Books.CountAsync(b => b.IsActive);
+            return await _context.Books.CountAsync(b => b.isActive);
         }
     }
 }
