@@ -1,0 +1,463 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BookStoreAPI</name>
+    </assembly>
+    <members>
+        <member name="T:BookStoreAPI.Controllers.AuthenticationController">
+            <summary>
+            Controller for handling authentication and JWT token generation.
+            </summary>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.AuthenticationController.Login(BookStoreAPI.DTOs.UserLoginDto)">
+            <summary>
+            Authenticates a user and returns a JWT token.
+            </summary>
+            <param name="user">User credentials.</param>
+            <returns>JWT token if credentials are valid.</returns>
+            <response code="200">Returns a JWT token.</response>
+            <response code="400">If the credentials are invalid.</response>
+            <response code="401">If the user is not authorized.</response>
+        </member>
+        <member name="T:BookStoreAPI.Controllers.AuthorsController">
+            <summary>
+            Controller for managing authors in the bookstore.
+            </summary>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.AuthorsController.GetAuthors(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a paginated list of authors.
+            </summary>
+            <param name="page">The page number for pagination (default is 1).</param>
+            <param name="limit">The number of authors to return per page (default is 10).</param>
+            <returns>An action result containing a list of authors and the total count.</returns>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.AuthorsController.GetAllAuthors">
+            <summary>
+            Retrieves a list of all authors.
+            </summary>
+            <returns>An action result containing a list of all authors.</returns>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.AuthorsController.GetAuthorByIdAsync(System.Int32)">
+            <summary>
+            Retrieves a specific author by their id.
+            </summary>
+            <param name="id">The unique identifier of the author.</param>
+            <returns>An action result containing the author if found; otherwise, a 404 Not Found status.</returns>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.AuthorsController.AddAuthor(BookStoreAPI.DTOs.AuthorCreateDto)">
+            <summary>
+            Adds a new author to the bookstore.
+            </summary>
+            <param name="authorDto">The data transfer object containing author details.</param>
+            <returns>An action result containing the created author if successful; otherwise, a 400 Bad Request status.</returns>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.AuthorsController.UpdateAuthor(System.Int32,BookStoreAPI.DTOs.AuthorCreateDto)">
+            <summary>
+            Updates an existing author's details.
+            </summary>
+            <param name="id">The unique identifier of the author to update.</param>
+            <param name="authorDto">The data transfer object containing updated author details.</param>
+            <returns>An action result containing the updated author if successful; otherwise, a 404 Not Found status.</returns>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.AuthorsController.DeleteAuthor(System.Int32)">
+            <summary>
+            Deletes an author by their identifier.
+            </summary>
+            <param name="id">The unique identifier of the author to delete.</param>
+            <returns>An action result indicating the outcome of the delete operation.</returns>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.BooksController.GetBooks(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a paginated list of books.
+            </summary>
+            <param name="page">The page number to retrieve (default is 1).</param>
+            <param name="limit">The number of books per page (default is 10).</param>
+            <returns>A list of books with total count.</returns>
+            <response code="200">Returns the paginated list of books and total count.</response>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.BooksController.GetAllBooks">
+            <summary>
+            Retrieves a list of all books.
+            </summary>
+            <returns>A list of all books with total count.</returns>
+            <response code="200">Returns the list of all books and total count.</response>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.BooksController.GetBookByIdAsync(System.Int32)">
+            <summary>
+            Retrieves a specific book by ID.
+            </summary>
+            <param name="id">The ID of the book to retrieve.</param>
+            <returns>The requested book if found.</returns>
+            <response code="200">Returns the requested book.</response>
+            <response code="404">If the book with the specified ID is not found.</response>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.BooksController.AddBook(BookStoreAPI.DTOs.BookCreateDto)">
+            <summary>
+            Adds a new book.
+            </summary>
+            <param name="bookDto">The book details to add.</param>
+            <returns>The newly created book.</returns>
+            <response code="201">Returns the newly created book.</response>
+            <response code="400">If the book details are invalid.</response>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.BooksController.UpdateBook(System.Int32,BookStoreAPI.DTOs.BookCreateDto)">
+            <summary>
+            Updates an existing book by ID.
+            </summary>
+            <param name="id">The ID of the book to update.</param>
+            <param name="bookDto">The updated book details.</param>
+            <returns>The updated book.</returns>
+            <response code="200">Returns the updated book.</response>
+            <response code="404">If the book with the specified ID is not found.</response>
+            <response code="400">If the book details are invalid.</response>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.BooksController.DeleteBook(System.Int32)">
+            <summary>
+            Deletes a book by ID.
+            </summary>
+            <param name="id">The ID of the book to delete.</param>
+            <returns>No content if the book is successfully deleted.</returns>
+            <response code="204">If the book is successfully deleted.</response>
+            <response code="404">If the book with the specified ID is not found.</response>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.BooksController.UploadFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Uploads a file.
+            </summary>
+            <param name="file">The file to upload.</param>
+            <returns>The path to the uploaded file.</returns>
+            <response code="200">Returns the file path of the uploaded file.</response>
+            <response code="400">If no file is uploaded.</response>
+            <response code="500">If an error occurs while uploading the file.</response>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.GenresController.GetGenres(System.Int32,System.Int32)">
+            <summary>
+            Retrieves a paginated list of genres.
+            </summary>
+            <param name="page">The page number to retrieve (default is 1).</param>
+            <param name="limit">The number of items per page (default is 10).</param>
+            <returns>A paginated list of genres and the total count of genres.</returns>
+            <response code="200">Returns the paginated list of genres and total count.</response>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.GenresController.GetAllGenres">
+            <summary>
+            Retrieves a list of all genres.
+            </summary>
+            <returns>A list of all genres.</returns>
+            <response code="200">Returns the list of all genres.</response>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.GenresController.GetGenreByIdAsync(System.Int32)">
+            <summary>
+            Retrieves a genre by its ID.
+            </summary>
+            <param name="id">The ID of the genre to retrieve.</param>
+            <returns>The genre with the specified ID.</returns>
+            <response code="200">Returns the genre with the specified ID.</response>
+            <response code="404">If the genre with the specified ID is not found.</response>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.GenresController.AddGenre(BookStoreAPI.DTOs.GenreCreateDto)">
+            <summary>
+            Adds a new genre.
+            </summary>
+            <param name="genreDto">The genre details to create.</param>
+            <returns>The created genre.</returns>
+            <response code="201">Returns the created genre.</response>
+            <response code="400">If the genre name is not provided.</response>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.GenresController.UpdateGenre(System.Int32,BookStoreAPI.DTOs.GenreCreateDto)">
+            <summary>
+            Updates an existing genre.
+            </summary>
+            <param name="id">The ID of the genre to update.</param>
+            <param name="genreDto">The updated genre details.</param>
+            <returns>The updated genre.</returns>
+            <response code="200">Returns the updated genre.</response>
+            <response code="400">If the genre name is not provided.</response>
+            <response code="404">If the genre with the specified ID is not found.</response>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.GenresController.DeleteGenre(System.Int32)">
+            <summary>
+            Deletes a genre by its ID.
+            </summary>
+            <param name="id">The ID of the genre to delete.</param>
+            <returns>No content on success.</returns>
+            <response code="204">Indicates that the genre was successfully deleted.</response>
+            <response code="404">If the genre with the specified ID is not found.</response>
+        </member>
+        <member name="T:BookStoreAPI.Controllers.UserController">
+            <summary>
+            Controller for managing user operations.
+            </summary>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.UserController.GetUsers">
+            <summary>
+            List all active users
+            </summary>
+            <returns>All active users</returns>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.UserController.CheckUser(BookStoreAPI.Models.userstest)">
+            <summary>
+            Check username and password
+            </summary>
+            <param name="user">User credentials</param>
+            <returns>Status of the login attempt</returns>
+        </member>
+        <member name="M:BookStoreAPI.Controllers.UserController.Login(BookStoreAPI.Models.userstest)">
+            <summary>
+            Login user
+            </summary>
+            <param name="user">User credentials</param>
+            <returns>Status of the login attempt</returns>
+        </member>
+        <member name="T:BookStoreAPI.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:BookStoreAPI.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:BookStoreAPI.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:BookStoreAPI.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:BookStoreAPI.Migrations.InitialCreatenew">
+            <inheritdoc />
+        </member>
+        <member name="M:BookStoreAPI.Migrations.InitialCreatenew.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:BookStoreAPI.Migrations.InitialCreatenew.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:BookStoreAPI.Migrations.InitialCreatenew.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:BookStoreAPI.Migrations.changegenres">
+            <inheritdoc />
+        </member>
+        <member name="M:BookStoreAPI.Migrations.changegenres.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:BookStoreAPI.Migrations.changegenres.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:BookStoreAPI.Migrations.changegenres.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:BookStoreAPI.Models.authors">
+            <summary>
+            Represents an author in the bookstore.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.authors.author_id">
+            <summary>
+            Gets or sets the unique identifier for the author.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.authors.Name">
+            <summary>
+            Gets or sets the name of the author.
+            </summary>
+            <remarks>
+            This field is required and has a maximum length of 255 characters.
+            </remarks>
+        </member>
+        <member name="P:BookStoreAPI.Models.authors.Biography">
+            <summary>
+            Gets or sets the biography of the author.
+            </summary>
+            <remarks>
+            This field is optional.
+            </remarks>
+        </member>
+        <member name="P:BookStoreAPI.Models.authors.IsActive">
+            <summary>
+            Gets or sets a value indicating whether the author is active.
+            </summary>
+            <remarks>
+            This field is required and defaults to true.
+            </remarks>
+        </member>
+        <member name="P:BookStoreAPI.Models.authors.CreatedAt">
+            <summary>
+            Gets or sets the date and time when the author was created.
+            </summary>
+            <remarks>
+            This field is automatically set to the current date and time when the author is created.
+            </remarks>
+        </member>
+        <member name="P:BookStoreAPI.Models.authors.UpdatedAt">
+            <summary>
+            Gets or sets the date and time when the author was last updated.
+            </summary>
+            <remarks>
+            This field is automatically updated to the current date and time when the author is modified.
+            </remarks>
+        </member>
+        <member name="P:BookStoreAPI.Models.authors.Books">
+            <summary>
+            Navigation property for the books associated with the author.
+            </summary>
+            <remarks>
+            This property represents a collection of books written by the author.
+            </remarks>
+        </member>
+        <member name="T:BookStoreAPI.Models.books">
+            <summary>
+            Represents a book in the bookstore.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.book_id">
+            <summary>
+            Gets or sets the unique identifier for the book.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.title">
+            <summary>
+            Gets or sets the title of the book.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.author_id">
+            <summary>
+            Gets or sets the identifier for the author of the book.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.genre_id">
+            <summary>
+            Gets or sets the identifier for the genre of the book.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.price">
+            <summary>
+            Gets or sets the price of the book.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.publication_date">
+            <summary>
+            Gets or sets the publication date of the book.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.ISBN">
+            <summary>
+            Gets or sets the ISBN number of the book.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.imageURL">
+            <summary>
+            Gets or sets the URL of the book's cover image.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.description">
+            <summary>
+            Gets or sets the description of the book.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.isActive">
+            <summary>
+            Gets or sets the status indicating whether the book is active.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.createdAt">
+            <summary>
+            Gets or sets the date and time when the book was created.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.updatedAt">
+            <summary>
+            Gets or sets the date and time when the book was last updated.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.Author">
+            <summary>
+            Navigation property for the author of the book.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.books.Genres">
+            <summary>
+            Navigation property for the genre of the book.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.Genres.genre_id">
+            <summary>
+            Gets or sets the unique identifier for the genre.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.Genres.genre_name">
+            <summary>
+            Gets or sets the name of the genre.
+            </summary>
+            <value>
+            The name of the genre.
+            </value>
+        </member>
+        <member name="P:BookStoreAPI.Models.Genres.isActive">
+            <summary>
+            Gets or sets a value indicating whether the genre is active.
+            </summary>
+            <value>
+            <c>true</c> if the genre is active; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:BookStoreAPI.Models.Genres.createdAt">
+            <summary>
+            Gets or sets the date and time when the genre was created.
+            </summary>
+            <value>
+            The date and time of genre creation.
+            </value>
+        </member>
+        <member name="P:BookStoreAPI.Models.Genres.updatedAt">
+            <summary>
+            Gets or sets the date and time when the genre was last updated.
+            </summary>
+            <value>
+            The date and time of the last update to the genre.
+            </value>
+        </member>
+        <member name="P:BookStoreAPI.Models.Genres.Books">
+            <summary>
+            Gets or sets the collection of books associated with this genre.
+            </summary>
+            <value>
+            The collection of books belonging to the genre.
+            </value>
+        </member>
+        <member name="T:BookStoreAPI.Models.userstest">
+            <summary>
+            Represents a user in the system.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.userstest.Id">
+            <summary>
+            Gets or sets the unique identifier for the user.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.userstest.Username">
+            <summary>
+            Gets or sets the username of the user.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.userstest.Password">
+            <summary>
+            Gets or sets the password of the user.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.userstest.IsActive">
+            <summary>
+            Gets or sets a value indicating whether the user is active.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.userstest.CreatedAt">
+            <summary>
+            Gets or sets the date and time when the user was created.
+            </summary>
+        </member>
+        <member name="P:BookStoreAPI.Models.userstest.UpdatedAt">
+            <summary>
+            Gets or sets the date and time when the user was last updated.
+            </summary>
+        </member>
+    </members>
+</doc>

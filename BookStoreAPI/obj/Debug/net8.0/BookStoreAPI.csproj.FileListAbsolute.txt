@@ -5,10 +5,12 @@ D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\bin\Debu
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\bin\Debug\net8.0\BookStoreAPI.runtimeconfig.json
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\bin\Debug\net8.0\BookStoreAPI.dll
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\bin\Debug\net8.0\BookStoreAPI.pdb
+D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\bin\Debug\net8.0\BookStoreAPI.xml
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\bin\Debug\net8.0\AutoMapper.dll
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\bin\Debug\net8.0\Azure.Core.dll
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\bin\Debug\net8.0\Azure.Identity.dll
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\bin\Debug\net8.0\Humanizer.dll
+D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -133,6 +135,7 @@ D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\obj\Debu
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\obj\Debug\net8.0\BookStor.D9EAB9B2.Up2Date
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\obj\Debug\net8.0\BookStoreAPI.dll
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\obj\Debug\net8.0\refint\BookStoreAPI.dll
+D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\obj\Debug\net8.0\BookStoreAPI.xml
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\obj\Debug\net8.0\BookStoreAPI.pdb
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\obj\Debug\net8.0\BookStoreAPI.genruntimeconfig.cache
 D:\Users\yuvarani\source\repos\BookStoreManagementSolution\BookStoreAPI\obj\Debug\net8.0\ref\BookStoreAPI.dll
