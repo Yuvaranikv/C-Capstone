@@ -4,11 +4,13 @@ using BookStoreAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookStoreAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+   
     public class BooksController : ControllerBase
     {
 

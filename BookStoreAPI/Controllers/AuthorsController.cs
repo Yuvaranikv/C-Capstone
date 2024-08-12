@@ -119,6 +119,7 @@ namespace BookStoreAPI.Controllers
         {
             var result = await _repository.DeleteAuthorAsync(id);
             if (!result) return NotFound();
+            HttpContext.Response.Headers.Add("X-Message", "Author Deleted successfully");
             return NoContent();
         }
     }
