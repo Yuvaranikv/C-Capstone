@@ -30,7 +30,7 @@ namespace BookStoreAPI.Controllers
         /// <param name="limit">The number of books per page (default is 10).</param>
         /// <returns>A list of books with total count.</returns>
         /// <response code="200">Returns the paginated list of books and total count.</response>
-        [HttpGet]
+       
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BookDto>>> GetBooks([FromQuery] int page = 1, [FromQuery] int limit = 10)
         {

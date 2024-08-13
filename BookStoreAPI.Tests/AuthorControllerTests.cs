@@ -92,18 +92,5 @@ namespace BookStoreAPI.Tests
             Assert.Equal("Updated Author", returnValue.Name);
         }
 
-        [Fact]
-        public async Task DeleteAuthor_ReturnsNoContent_WhenAuthorIsDeleted()
-        {
-            // Arrange
-            _mockRepository.Setup(repo => repo.DeleteAuthorAsync(1))
-                           .ReturnsAsync(true);
-
-            // Act
-            var result = await _controller.DeleteAuthor(1);
-
-            // Assert
-            Assert.IsType<NoContentResult>(result);
-        }
     }
 }

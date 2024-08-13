@@ -222,8 +222,8 @@ var assemblies = [
     "name": "BookStoreAPI",
     "classes": [
       { "name": "BookStoreAPI.Controllers.AuthenticationController", "rp": "BookStoreAPI_AuthenticationController.html", "cl": 0, "ucl": 35, "cal": 35, "tl": 80, "cb": 0, "tb": 8, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "BookStoreAPI.Controllers.AuthorsController", "rp": "BookStoreAPI_AuthorsController.html", "cl": 37, "ucl": 13, "cal": 50, "tl": 126, "cb": 7, "tb": 14, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "BookStoreAPI.Controllers.BooksController", "rp": "BookStoreAPI_BooksController.html", "cl": 0, "ucl": 65, "cal": 65, "tl": 175, "cb": 0, "tb": 18, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "BookStoreAPI.Controllers.AuthorsController", "rp": "BookStoreAPI_AuthorsController.html", "cl": 37, "ucl": 13, "cal": 50, "tl": 127, "cb": 7, "tb": 14, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "BookStoreAPI.Controllers.BooksController", "rp": "BookStoreAPI_BooksController.html", "cl": 0, "ucl": 65, "cal": 65, "tl": 177, "cb": 0, "tb": 18, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "BookStoreAPI.Controllers.GenresController", "rp": "BookStoreAPI_GenresController.html", "cl": 44, "ucl": 0, "cal": 44, "tl": 126, "cb": 12, "tb": 14, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "BookStoreAPI.Controllers.UserController", "rp": "BookStoreAPI_UserController.html", "cl": 22, "ucl": 8, "cal": 30, "tl": 96, "cb": 8, "tb": 16, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "BookStoreAPI.DbContexts.BookStoreContext", "rp": "BookStoreAPI_BookStoreContext.html", "cl": 0, "ucl": 208, "cal": 208, "tl": 227, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
